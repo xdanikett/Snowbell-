@@ -1,11 +1,20 @@
+.prosto-one-regular {
+  font-family: "Prosto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   box-sizing: border-box;
-  background-color: black;
+  background-color: #0f1108;
+  overflow-x: hidden;
 }
+
 .header {
   display: flex;
   flex-direction: column;
@@ -16,19 +25,28 @@ body {
   border-radius: 1rem;
   margin-top: 2.2rem;
   background: linear-gradient(538deg, #454d29, #242a0d);
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
+
 .logo-header {
   display: flex;
-  gap: 14.3rem;
   padding-top: 0.5rem;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .content-header {
   display: flex;
-  gap: 4.1rem;
   font-size: 1.1rem;
   color: white;
   margin: 1.2rem 0;
+  width: 80%;
+  justify-content: space-between;
 }
+
 .hero-container {
   color: white;
   display: flex;
@@ -37,113 +55,110 @@ body {
   align-items: center;
   padding: 8.2rem 0;
 }
+
 .hero-heading {
-  font-size: 3.9rem;
+  font-size: 3.7rem;
   text-align: center;
+  width: 90%;
+  font-family: "Prosto One", sans-serif;
 }
+
 .hero-content {
   text-align: center;
   font-size: 1.2rem;
   max-width: 47.2rem;
   margin: 2.2rem 0;
+  width: 37%;
 }
+
 .hero-cat-image {
   transition: transform 0.3s ease;
   width: 400px;
 }
+
+.memecoin-section {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 .memecoin-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  margin: auto;
-  background: linear-gradient(538deg, #454d29, #242a0d);
   color: white;
   border-radius: 1rem;
-  padding-top: 2.2rem;
-  padding-bottom: 2.9rem;
-  padding-left: 9.2rem;
-  padding-right: 9.2rem;
   position: relative;
+  padding: 3rem 0 5rem 0;
+  margin: 1rem 8rem;
+  background: linear-gradient(
+    180deg,
+    rgba(119, 134, 64, 0.5) 0%,
+    rgba(65, 79, 14, 0.5) 100%
+  );
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
 }
+
 .memecoin-heading {
-  font-size: 3.4rem;
+  font-family: "Prosto One", sans-serif;
+  font-size: 3.7rem;
   text-align: center;
   padding-bottom: 1.6rem;
+  width: 90%;
 }
+
 .memecoin-content {
   text-align: center;
+  width: 60%;
 }
+
 .coin2-image {
   position: absolute;
   left: -5.6rem;
   width: 11.2rem;
 }
+
 .coin1-image {
-  width: 9.2rem;
+  width: 16.2rem;
   position: absolute;
-  right: -1.6rem;
-  top: 15.1rem;
+  right: -8.6rem;
+  top: 5.1rem;
 }
+
 .coin4-image {
   position: absolute;
-  top: -100px;
-  width: 9.2rem;
+  top: -90px;
+  width: 10.2rem;
+  z-index: -1 !important;
 }
-.scroll-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 12.2rem 0;
-  gap: 2.2rem;
+.cursor {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  background-color: yellow;
+  /* border: 1px solid yellow; */
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.1s;
+  z-index: -111;
 }
-.scroll-heading {
-  font-size: 3.7rem;
-}
-.scroll-content {
-  text-align: center;
-  width: 45%;
-  font-size: 0.9rem;
-}
-/* .content-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  gap: 2.2rem;
-}
-.crypto-heading {
-  font-size: 3.7rem;
-}
-.crypto-content {
-  text-align: center;
-  width: 53%;
-  font-size: 0.9rem;
-} */
-.tokenomic-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  gap: 3.8rem;
-}
-.tokenomic-heading {
-  font-size: 3.2rem;
-}
-.tokenomic-image {
-  width: 40%;
-}
-.footer-section {
-  opacity: 1;
-  background: linear-gradient(538deg, #454d29, #242a0d),
-    url("images/Rectangle\ 5746\ \(1\).svg");
-  background-size: cover;
+.cursor2 {
+  position: fixed;
+  /* height: 8px;
+  width: 8px; */
+  background-color: yellow;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.15s;
+  z-index: -111;
 }
