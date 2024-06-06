@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Snowbell</title>
+  </head>
+  <body>
+    <!-- Header section -->
+    <div class="header">
+      <div class="logo-header">
+        <img src="images/Telegram1 1.svg" alt="" />
+        <img src="images/SNBL Logo_2 1.svg" alt="" />
+        <img src="images/Social Media.svg" alt="" />
+      </div>
+      <div class="content-header">
+        <p>Cat In Action</p>
+        <p>Tokenomics</p>
+        <p>What is $SNBL coin?</p>
+        <p>Roadmap</p>
+        <p>How to buy?</p>
+      </div>
+    </div>
+
+    <!-- Header end -->
+
+    <!-- Hero section -->
+
+    <div class="hero-container">
+      <p class="hero-heading">
+        🎉 Welcome to the Purrfect Paradise of Snowbell Coin ($SNBL)! 🐾
+      </p>
+      <p class="hero-content">
+        Where crypto 🤑 meets cuteness 😻, and every transaction 🔁 is
+        purr-fectly delightful. Join us in this meow-nificent adventure to the
+        moon! 🚀🌕
+      </p>
+      <img
+        id="resizable-image"
+        class="hero-cat-image"
+        src="images/Group 7.svg"
+        alt=""
+      />
+    </div>
+    <!-- Hero end -->
+
+    <!-- Memecoin section -->
+    <div class="memecoin-container">
+      <p class="memecoin-heading">What in cat's whiskers is $SNBL?</p>
+      <p class="memecoin-content">
+        Introducing 📢 🐱 Snowbell Coin ($SNBL) 💰 - the purrfect 😼 blend of
+        cuteness 😻 and 🤑 crypto chaos! This feline-inspired meme 💰 coin is
+        clawing its way to the moon faster than a cat 🐱 chasing a laser pointer
+        🔦. With its nine 9️⃣ lives' worth of volatility 📈, SNBL will have you
+        saying 🗨 "meowza" as you watch 👀 your investment 💸 fluctuate 📉 like a
+        kitten 🐾 chasing 🏃🏻 a ball ⚽︎ of yarn. Don't be fooled 😜 by its
+        fluffy exterior; 🐱 Snowbell Coin 💰 is here to scratch the surface 🟦
+        of the 🤑 crypto world and leave its paw 🐾 prints ✍️ all over the
+        blockchain ⛓. So, buckle up, hodl tight 🗜, and let's ride this 🤑 crypto
+        rollercoaster 🎢 straight ➡ into the litter box 🎁 of financial
+        💵success!🥇 🐱🚀
+      </p>
+      <img class="coin4-image" src="images/Coin 4.svg" alt="" />
+      <img class="coin2-image" src="images/Coin 2.svg" alt="" />
+      <img class="coin1-image" src="images/Coin 1.svg" alt="" />
+    </div>
+    <!-- Memecoin end -->
+
+    <!-- Scroll section -->
+    <div class="scroll-container">
+      <p class="scroll-heading">Snowbell's Crypto Catwalk! 🐱📈</p>
+      <p class="scroll-content">
+        Get ready 🏁 to strut your stuff on Snowbell's Crypto 🤑 Catwalk! 🐈
+        🐱📈 Join us for a purr-fectly fabulous 😉 journey 🚗 through the world
+        🌏 of crypto 🤑, where every step 🐾 is a stylish 😻 leap toward
+        financial 💵 fur-tune. Whether you're a seasoned trader 💹 or a curious
+        🤩 kitten 🐱, our catwalk 🐈 welcomes 🤗 all to showcase 🖼️ their
+        investment 💸 flair. So, grab ✨ your whiskers and let's sashay 🚶 our
+        way to the moon 🌑 together 🤝! 🚀
+      </p>
+      <div></div>
+    </div>
+
+    <!-- Scroll section end -->
+
+    <!-- Content-section -->
+
+    <div class="content-container scroll-container">
+      <p class="crypto-heading scroll-heading">
+        Snowbell's Crypto Catventure! 🐾🌟
+      </p>
+      <p class="crypto-content scroll-content">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting,
+      </p>
+    </div>
+    <!-- Content-section end -->
+
+    <!-- Tokenomic section -->
+
+    <div class="tokenomic-container">
+      <p class="tokenomic-heading">Tokenomic</p>
+      <img
+        class="tokenomic-image"
+        src="images/Tokenomics (3) 1 (1).svg"
+        alt=""
+      />
+    </div>
+
+    <!-- Tokenomic section end -->
+
+    <!-- Footer section -->
+
+    <div class="footer-section"></div>
+    <!-- Footer section end -->
+  </body>
+</html>
+<script>
+  let initialWidth = 400;
+  let maxWidth = 3000;
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const newWidth = initialWidth + scrollY / 5;
+    document.getElementById("resizable-image").style.width = `${Math.min(
+      newWidth,
+      maxWidth
+    )}px`;
+  });
+</script>
