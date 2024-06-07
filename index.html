@@ -22,11 +22,19 @@
     <div class="header">
       <div class="logo-header">
         <a rel="noopener" href="https://telegram.org/" target="_blank">
-          <img src="images/Telegram1 1.svg" alt="telegram" />
+          <img
+            class="social-icon"
+            src="images/Telegram1 1.svg"
+            alt="telegram"
+          />
         </a>
-        <img src="images/SNBL Logo_2 1.svg" alt="" />
+        <img class="cat-logo" src="images/SNBL Logo_2 1.svg" alt="" />
         <a rel="noopener" href="https://telegram.org/" target="_blank">
-          <img src="images/Social Media.svg" alt="telegram" />
+          <img
+            class="social-icon"
+            src="images/Social Media.svg"
+            alt="telegram"
+          />
         </a>
       </div>
       <div class="content-header">
@@ -51,7 +59,7 @@
       </p>
       <img
         id="resizable-image"
-        class="hero-cat-image"
+        class="new-cat-image"
         src="images/Group 7.svg"
         alt=""
       />
@@ -81,6 +89,15 @@
     </div>
   </body>
 </html>
+
+<script>
+  var cursor = document.querySelector(".cursor");
+  var cursor2 = document.querySelector(".cursor2");
+  document.addEventListener("mousemove", function (e) {
+    cursor.style.cssText = cursor2.style.cssText =
+      "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+  });
+</script>
 <script>
   let initialWidth = 400;
   let maxWidth = "75%";
@@ -92,13 +109,12 @@
       newWidth,
       (parseFloat(maxWidth) / 100) * window.innerWidth
     )}px`;
-  });
-</script>
-<script>
-  var cursor = document.querySelector(".cursor");
-  var cursor2 = document.querySelector(".cursor2");
-  document.addEventListener("mousemove", function (e) {
-    cursor.style.cssText = cursor2.style.cssText =
-      "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+    const box = document.getElementById("resizable-image");
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    let newBorderRadius = Math.max(40, 50 - (scrollY / maxScroll) * 50);
+
+    box.style.borderRadius = `${newBorderRadius}px`;
   });
 </script>

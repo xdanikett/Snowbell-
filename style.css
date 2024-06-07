@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 50%;
   margin: auto;
   border-radius: 1rem;
   margin-top: 2.2rem;
@@ -32,18 +32,23 @@ body {
 
 .logo-header {
   display: flex;
-  padding-top: 0.5rem;
-  width: 90%;
+  padding-top: 1rem;
+  width: 80%;
   justify-content: space-between;
   align-items: center;
 }
-
+.social-icon {
+  width: 1.9rem;
+}
+.cat-logo {
+  width: 35%;
+}
 .content-header {
   display: flex;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: white;
-  margin: 1.2rem 0;
-  width: 80%;
+  margin: 1.1rem 0;
+  width: 70%;
   justify-content: space-between;
 }
 
@@ -53,7 +58,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8.2rem 0;
+  padding: 3.2rem 0;
+  padding-bottom: 8.2rem;
 }
 
 .hero-heading {
@@ -71,9 +77,13 @@ body {
   width: 37%;
 }
 
-.hero-cat-image {
-  transition: transform 0.3s ease;
-  width: 400px;
+#resizable-image {
+  border-radius: 20%/50%;
+}
+
+.new-cat-image {
+  width: 50%;
+  display: block;
 }
 
 .memecoin-section {
@@ -98,6 +108,7 @@ body {
     rgba(65, 79, 14, 0.5) 100%
   );
   border-radius: 16px;
+  border: 1px solid white;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.4px);
   -webkit-backdrop-filter: blur(7.4px);
