@@ -24,8 +24,8 @@ body {
   margin: auto;
   border-radius: 1rem;
   margin-top: 2.2rem;
-  position: sticky;
-  top: 0;
+  /* position: sticky;
+  top: 0.5rem; */
   z-index: 3;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -92,7 +92,7 @@ body {
   width: 37%;
 }
 
-#cat-container {
+/* #cat-container {
   background: url("images/cat back.svg");
   background-size: cover;
   display: flex;
@@ -103,12 +103,18 @@ body {
   position: relative;
   height: 171px;
   transition: width 0.3s, border-radius 0.3s;
-}
+} */
 
-#resizable-image {
+#cat-container {
+  width: 250px;
+  height: 150px;
+  background-color: red;
+  border-radius: 80px;
+}
+/* #resizable-image {
   width: 14vw;
   position: absolute;
-}
+} */
 
 .memecoin-section {
   display: flex;
@@ -178,12 +184,14 @@ body {
   align-items: center;
   text-align: center;
   color: white;
-  padding: 12.2rem 0;
   gap: 2.2rem;
+  padding-top: 12.2rem;
 }
-
+.content-container {
+  padding-top: 5.2rem;
+}
 .scroll-heading {
-  font-size: 3.7rem;
+  font-size: 2.7rem;
   font-family: "Prosto One", sans-serif;
 }
 
@@ -214,7 +222,6 @@ body {
 }
 
 .footer-section {
-  opacity: 1;
   background: linear-gradient(
       180deg,
       rgba(119, 134, 64, 0.5) 0%,
@@ -222,18 +229,22 @@ body {
     ),
     url("/images/cat.svg");
   background-size: cover;
-  height: 550px;
-  margin-top: 23.2rem;
-  position: relative;
   background-position-x: center;
+
+  width: 100%;
+  height: 65vh;
+  background-color: #454d29;
+  margin-top: 7rem;
+  position: relative;
 }
 .cycle-cat-image {
   position: absolute;
   bottom: 0;
+  height: 80vh;
 }
 .inner-footer {
   position: absolute;
-  top: 9rem;
+  top: 3rem;
   right: 6rem;
   color: white;
 }
@@ -247,12 +258,123 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8.2rem;
+  gap: 7.2rem;
   padding-top: 4.2rem;
 }
 #social-icon {
-  width: 2.1rem;
+  width: 2rem;
 }
 .spaced {
   letter-spacing: 0.7rem;
+}
+
+.gif-container-wrapper {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.gif-container {
+  overflow-x: hidden;
+  display: flex;
+  width: 100%;
+  padding-top: 1.9rem;
+}
+
+.gif-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.gif-svg {
+  flex: 0 0 auto;
+  width: 450px;
+  height: 400px;
+  margin-right: 10px;
+  object-fit: cover;
+  background-position: center;
+}
+
+.scroll-button {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.scroll-button.left {
+  left: 0;
+}
+
+.scroll-button.right {
+  right: 0;
+}
+
+.scroll-button:hover {
+  background-color: #ddd;
+}
+.container-flipper {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Prosto One", sans-serif;
+  color: white;
+  margin: 2rem 0;
+  gap: 1.1rem;
+  flex-direction: column;
+  align-items: self-end;
+  padding: 2.2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  background-color: #778640;
+  width: 40%;
+  padding: 3.1rem 2.2rem;
+  border-radius: 1.2rem;
+}
+.container:hover {
+  background-color: blueviolet;
+  transition: 1s;
+  cursor: pointer;
+}
+.container2:hover {
+  background-color: chocolate;
+}
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  background-color: #778640;
+  width: 40%;
+  padding: 3.1rem 2.2rem;
+  border-radius: 1.2rem;
+}
+.container-heading {
+  font-size: 3rem;
+}
+.container-content {
+  font-size: 0.9rem;
+  margin-top: 1.1rem;
+}
+.container1 {
+  transform: translateX(-100%);
+}
+
+.container2 {
+  transform: translateX(100%);
+}
+
+.container-visible {
+  opacity: 1;
+  transform: translateX(0);
 }

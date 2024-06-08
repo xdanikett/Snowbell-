@@ -55,7 +55,7 @@
         moon! 🚀🌕
       </p>
       <div id="cat-container">
-        <img id="resizable-image" src="images/new cat2.svg" alt="" />
+        <!-- <img id="resizable-image" src="images/new cat2.svg" alt="" /> -->
       </div>
     </div>
 
@@ -93,11 +93,38 @@
         investment 💸 flair. So, grab ✨ your whiskers and let's sashay 🚶 our
         way to the moon 🌑 together 🤝! 🚀
       </p>
-      <div class="gif-container">
-        <img class="gif-svg" src="images/gif 1.svg" alt="" />
-        <img class="gif-svg" src="images/gif 2.svg" alt="" />
-        <img class="gif-svg" src="images/gif 3.svg" alt="" />
-        <img class="gif-svg" src="images/gif 4.svg" alt="" />
+
+      <div class="gif-container-wrapper">
+        <button class="scroll-button left" onclick="scrollLeft()">
+          &#9664;
+        </button>
+        <div class="gif-container" id="gifContainer">
+          <div class="gif-track" id="gifTrack">
+            <img
+              class="gif-svg"
+              src="images/a realistic fun 43fcd62c-d628-45c1-81a5-f344b87629c6.gif"
+              alt=""
+            />
+            <img
+              class="gif-svg"
+              src="images/a realistic fun 89effb41-5e66-4586-85f7-3eed182ef434.gif"
+              alt=""
+            />
+            <img
+              class="gif-svg"
+              src="images/a realistic fun a4c5ee9f-c14c-44d7-8e6a-540112c721f4.gif"
+              alt=""
+            />
+            <img
+              class="gif-svg"
+              src="images/WhatsApp Video 2024-05-18 at 3.41.48 PM (1).gif"
+              alt=""
+            />
+          </div>
+        </div>
+        <button class="scroll-button right" onclick="scrollRight()">
+          &#9654;
+        </button>
       </div>
     </div>
 
@@ -114,6 +141,33 @@
         scrambled it to make a type specimen book. It has survived not only five
         centuries, but also the leap into electronic typesetting,
       </p>
+    </div>
+
+    <!-- Container-flipper -->
+
+    <div class="container-flipper">
+      <div class="container1 container">
+        <p class="container-heading">Phase 1</p>
+        <p class="container-content">
+          "Kitten Chaos" - 🐱 In this initial phase, Snowbell Coin 💰 will
+          embark on its journey 🚩 with all the playful energy ⚡️ of a curious
+          kitten 🤩. Our focus will be on building a strong community 🤝
+          foundation 🏛️ through engaging 👋 social media 📷 campaigns, a
+          user-friendly wallet 💼 interface, and strategic partnerships 🤝 with
+          feline-friendly charities🏬.
+        </p>
+      </div>
+      <div class="container container2">
+        <p class="container-heading">Phase 2</p>
+        <p class="container-content">
+          "Kitten Chaos" - 🐱 In this initial phase, Snowbell Coin 💰 will
+          embark on its journey 🚩 with all the playful energy ⚡️ of a curious
+          kitten 🤩. Our focus will be on building a strong community 🤝
+          foundation 🏛️ through engaging 👋 social media 📷 campaigns, a
+          user-friendly wallet 💼 interface, and strategic partnerships 🤝 with
+          feline-friendly charities🏬.
+        </p>
+      </div>
     </div>
 
     <!-- Tokenomic section -->
@@ -163,12 +217,12 @@
 </html>
 
 <script>
-  var cursor = document.querySelector(".cursor");
-  var cursor2 = document.querySelector(".cursor2");
-  document.addEventListener("mousemove", function (e) {
-    cursor.style.cssText = cursor2.style.cssText =
-      "left: " + e.clientX + "px; top: " + e.clientY + "px;";
-  });
+  // var cursor = document.querySelector(".cursor");
+  // var cursor2 = document.querySelector(".cursor2");
+  // document.addEventListener("mousemove", function (e) {
+  //   cursor.style.cssText = cursor2.style.cssText =
+  //     "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+  // });
 
   // let initialWidth = 400;
   // let maxWidth = "75%";
@@ -188,4 +242,77 @@
 
   //   box.style.borderRadius = `${newBorderRadius}px`;
   // });
+</script>
+<script>
+  const gifContainer = document.getElementById("gifContainer");
+  const gifTrack = document.getElementById("gifTrack");
+  const gifs = Array.from(gifTrack.children);
+  const gifWidth =
+    gifs[0].offsetWidth +
+    parseInt(window.getComputedStyle(gifs[0]).marginRight);
+  let scrollPosition = 0;
+
+  function cloneGifs() {
+    gifs.forEach((gif) => {
+      const clone = gif.cloneNode(true);
+      gifTrack.appendChild(clone);
+    });
+  }
+
+  function scrollLeft() {
+    scrollPosition -= gifWidth;
+    gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+
+    // if (scrollPosition <= 0) {
+    //   setTimeout(() => {
+    //     gifTrack.style.transition = "none";
+    //     scrollPosition += gifWidth * gifs.length;
+    //     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+    //     setTimeout(
+    //       () => (gifTrack.style.transition = "transform 0.5s ease"),
+    //       0
+    //     );
+    //   }, 500); // Transition duration
+    // }
+  }
+
+  function scrollRight() {
+    scrollPosition += gifWidth;
+    gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+
+    // if (scrollPosition >= gifWidth * gifs.length) {
+    //   setTimeout(() => {
+    //     gifTrack.style.transition = "none";
+    //     scrollPosition -= gifWidth * gifs.length;
+    //     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+    //     setTimeout(
+    //       () => (gifTrack.style.transition = "transform 0.5s ease"),
+    //       0
+    //     );
+    //   }, 500); // Transition duration
+    // }
+  }
+
+  cloneGifs();
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const containers = document.querySelectorAll(".container");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("container-visible");
+            observer.unobserve(entry.target); // Unobserve the element once it is visible
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    containers.forEach((container) => {
+      observer.observe(container);
+    });
+  });
 </script>
