@@ -15,9 +15,6 @@
   </head>
 
   <body>
-    <!-- <div class="cursor"></div>
-    <div class="cursor2"></div> -->
-
     <!-- Header section -->
     <div class="header">
       <div class="logo-header">
@@ -57,12 +54,9 @@
         purr-fectly delightful. Join us in this meow-nificent adventure to the
         moon! 🚀🌕
       </p>
-      <img
-        id="resizable-image"
-        class="new-cat-image"
-        src="images/Group 7.svg"
-        alt=""
-      />
+      <div id="cat-container">
+        <img id="resizable-image" src="images/new cat2.svg" alt="" />
+      </div>
     </div>
 
     <!-- Memecoin section -->
@@ -87,6 +81,84 @@
       </div>
       <img class="coin4-image" src="images/Coin 4.svg" alt="" />
     </div>
+    <!-- Scroll section -->
+    <div class="scroll-container">
+      <p class="scroll-heading">Snowbell's Crypto Catwalk! 🐱📈</p>
+      <p class="scroll-content">
+        Get ready 🏁 to strut your stuff on Snowbell's Crypto 🤑 Catwalk! 🐈
+        🐱📈 Join us for a purr-fectly fabulous 😉 journey 🚗 through the world
+        🌏 of crypto 🤑, where every step 🐾 is a stylish 😻 leap toward
+        financial 💵 fur-tune. Whether you're a seasoned trader 💹 or a curious
+        🤩 kitten 🐱, our catwalk 🐈 welcomes 🤗 all to showcase 🖼️ their
+        investment 💸 flair. So, grab ✨ your whiskers and let's sashay 🚶 our
+        way to the moon 🌑 together 🤝! 🚀
+      </p>
+      <div class="gif-container">
+        <img class="gif-svg" src="images/gif 1.svg" alt="" />
+        <img class="gif-svg" src="images/gif 2.svg" alt="" />
+        <img class="gif-svg" src="images/gif 3.svg" alt="" />
+        <img class="gif-svg" src="images/gif 4.svg" alt="" />
+      </div>
+    </div>
+
+    <!-- Content-section -->
+
+    <div class="content-container scroll-container">
+      <p class="crypto-heading scroll-heading">
+        Snowbell's Crypto Catventure! 🐾🌟
+      </p>
+      <p class="crypto-content scroll-content">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting,
+      </p>
+    </div>
+
+    <!-- Tokenomic section -->
+
+    <div class="tokenomic-container">
+      <p class="tokenomic-heading">Tokenomic</p>
+      <img
+        class="tokenomic-image"
+        src="images/Tokenomics (3) 1 (1).svg"
+        alt=""
+      />
+    </div>
+
+    <!-- Footer section -->
+
+    <div class="footer-section">
+      <div class="inner-footer">
+        <p class="footer-heading">SNOWBELL</p>
+        <p class="spaced">When Life Gets Hot, Be a Snowbell!</p>
+        <div class="footer-social-icon">
+          <a rel="noopener" href="https://telegram.org/" target="_blank">
+            <img
+              id="social-icon"
+              src="./images/Telegram1 1.svg"
+              alt="telegram"
+            />
+          </a>
+          <a rel="noopener" href="https://telegram.org/" target="_blank">
+            <img id="social-icon" src="./images/Dextool.svg" alt="telegram" />
+          </a>
+          <a rel="noopener" href="https://telegram.org/" target="_blank">
+            <img
+              id="social-icon"
+              class="uniswap-img"
+              src="./images/twitter (2).svg"
+              alt="telegram"
+            />
+          </a>
+          <a rel="noopener" href="https://telegram.org/" target="_blank">
+            <img id="social-icon" src="./images/linktree.svg" alt="telegram" />
+          </a>
+        </div>
+      </div>
+      <img class="cycle-cat-image" src="images/cycle cat.svg" alt="" />
+    </div>
   </body>
 </html>
 
@@ -97,24 +169,23 @@
     cursor.style.cssText = cursor2.style.cssText =
       "left: " + e.clientX + "px; top: " + e.clientY + "px;";
   });
-</script>
-<script>
-  let initialWidth = 400;
-  let maxWidth = "75%";
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const newWidth = initialWidth + scrollY / 0.8;
-    document.getElementById("resizable-image").style.width = `${Math.min(
-      newWidth,
-      (parseFloat(maxWidth) / 100) * window.innerWidth
-    )}px`;
-    const box = document.getElementById("resizable-image");
-    const maxScroll =
-      document.documentElement.scrollHeight - window.innerHeight;
+  // let initialWidth = 400;
+  // let maxWidth = "75%";
 
-    let newBorderRadius = Math.max(40, 50 - (scrollY / maxScroll) * 50);
+  // window.addEventListener("scroll", () => {
+  //   const scrollY = window.scrollY;
+  //   const newWidth = initialWidth + scrollY / 0.8;
+  //   document.getElementById("cat-container").style.width = `${Math.min(
+  //     newWidth,
+  //     (parseFloat(maxWidth) / 100) * window.innerWidth
+  //   )}px`;
+  //   const box = document.getElementById("cat-container");
+  //   const maxScroll =
+  //     document.documentElement.scrollHeight - window.innerHeight;
 
-    box.style.borderRadius = `${newBorderRadius}px`;
-  });
+  //   let newBorderRadius = Math.max(40, 50 - (scrollY / maxScroll) * 50);
+
+  //   box.style.borderRadius = `${newBorderRadius}px`;
+  // });
 </script>

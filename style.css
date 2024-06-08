@@ -24,10 +24,25 @@ body {
   margin: auto;
   border-radius: 1rem;
   margin-top: 2.2rem;
-  background: linear-gradient(538deg, #454d29, #242a0d);
   position: sticky;
   top: 0;
   z-index: 3;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(538deg, #454d29, #242a0d);
+  opacity: 0.9;
 }
 
 .logo-header {
@@ -58,12 +73,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3.2rem 0;
+  padding: 2.8rem 0;
   padding-bottom: 8.2rem;
 }
 
 .hero-heading {
-  font-size: 3.7rem;
+  font-size: 2.7rem;
   text-align: center;
   width: 90%;
   font-family: "Prosto One", sans-serif;
@@ -71,19 +86,28 @@ body {
 
 .hero-content {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   max-width: 47.2rem;
-  margin: 2.2rem 0;
+  margin: 1rem 0;
   width: 37%;
 }
 
-#resizable-image {
-  border-radius: 20%/50%;
+#cat-container {
+  background: url("images/cat back.svg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 44%;
+  width: 21vw;
+  position: relative;
+  height: 171px;
+  transition: width 0.3s, border-radius 0.3s;
 }
 
-.new-cat-image {
-  width: 50%;
-  display: block;
+#resizable-image {
+  width: 14vw;
+  position: absolute;
 }
 
 .memecoin-section {
@@ -116,7 +140,7 @@ body {
 
 .memecoin-heading {
   font-family: "Prosto One", sans-serif;
-  font-size: 3.7rem;
+  font-size: 2.7rem;
   text-align: center;
   padding-bottom: 1.6rem;
   width: 90%;
@@ -146,30 +170,89 @@ body {
   width: 10.2rem;
   z-index: -1 !important;
 }
-.cursor {
-  position: fixed;
-  height: 50px;
-  width: 50px;
-  background-color: yellow;
-  /* border: 1px solid yellow; */
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: 0.1s;
-  z-index: -111;
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 12.2rem 0;
+  gap: 2.2rem;
 }
-.cursor2 {
-  position: fixed;
-  /* height: 8px;
-  width: 8px; */
-  background-color: yellow;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: 0.15s;
-  z-index: -111;
+
+.scroll-heading {
+  font-size: 3.7rem;
+  font-family: "Prosto One", sans-serif;
+}
+
+.scroll-content {
+  text-align: center;
+  width: 45%;
+  font-size: 0.9rem;
+}
+
+.tokenomic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  gap: 3.8rem;
+}
+
+.tokenomic-heading {
+  font-family: "Prosto One", sans-serif;
+
+  font-size: 3.2rem;
+}
+
+.tokenomic-image {
+  width: 40%;
+}
+
+.footer-section {
+  opacity: 1;
+  background: linear-gradient(
+      180deg,
+      rgba(119, 134, 64, 0.5) 0%,
+      rgba(65, 79, 14, 0.5) 100%
+    ),
+    url("/images/cat.svg");
+  background-size: cover;
+  height: 550px;
+  margin-top: 23.2rem;
+  position: relative;
+  background-position-x: center;
+}
+.cycle-cat-image {
+  position: absolute;
+  bottom: 0;
+}
+.inner-footer {
+  position: absolute;
+  top: 9rem;
+  right: 6rem;
+  color: white;
+}
+
+.footer-heading {
+  font-family: "Prosto One", sans-serif;
+  font-size: 4.2rem;
+  padding: 0 0rem 0.6rem 10.2rem;
+}
+.footer-social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8.2rem;
+  padding-top: 4.2rem;
+}
+#social-icon {
+  width: 2.1rem;
+}
+.spaced {
+  letter-spacing: 0.7rem;
 }
