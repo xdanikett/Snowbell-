@@ -24,8 +24,8 @@ body {
   margin: auto;
   border-radius: 1rem;
   margin-top: 2.2rem;
-  /* position: sticky;
-  top: 0.5rem; */
+  position: sticky;
+  top: 0.5rem;
   z-index: 3;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
