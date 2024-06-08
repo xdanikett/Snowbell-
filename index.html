@@ -55,7 +55,7 @@
         moon! 🚀🌕
       </p>
       <div id="cat-container">
-        <!-- <img id="resizable-image" src="images/new cat2.svg" alt="" /> -->
+        <img id="resizable-image" src="images/new cat2.svg" alt="" />
       </div>
     </div>
 
@@ -169,7 +169,30 @@
         </p>
       </div>
     </div>
-
+    <div class="container-flipper">
+      <div class="container1 container">
+        <p class="container-heading">Phase 3</p>
+        <p class="container-content">
+          "Kitten Chaos" - 🐱 In this initial phase, Snowbell Coin 💰 will
+          embark on its journey 🚩 with all the playful energy ⚡️ of a curious
+          kitten 🤩. Our focus will be on building a strong community 🤝
+          foundation 🏛️ through engaging 👋 social media 📷 campaigns, a
+          user-friendly wallet 💼 interface, and strategic partnerships 🤝 with
+          feline-friendly charities🏬.
+        </p>
+      </div>
+      <div class="container container2">
+        <p class="container-heading">Phase 4</p>
+        <p class="container-content">
+          "Kitten Chaos" - 🐱 In this initial phase, Snowbell Coin 💰 will
+          embark on its journey 🚩 with all the playful energy ⚡️ of a curious
+          kitten 🤩. Our focus will be on building a strong community 🤝
+          foundation 🏛️ through engaging 👋 social media 📷 campaigns, a
+          user-friendly wallet 💼 interface, and strategic partnerships 🤝 with
+          feline-friendly charities🏬.
+        </p>
+      </div>
+    </div>
     <!-- Tokenomic section -->
 
     <div class="tokenomic-container">
@@ -223,25 +246,6 @@
   //   cursor.style.cssText = cursor2.style.cssText =
   //     "left: " + e.clientX + "px; top: " + e.clientY + "px;";
   // });
-
-  // let initialWidth = 400;
-  // let maxWidth = "75%";
-
-  // window.addEventListener("scroll", () => {
-  //   const scrollY = window.scrollY;
-  //   const newWidth = initialWidth + scrollY / 0.8;
-  //   document.getElementById("cat-container").style.width = `${Math.min(
-  //     newWidth,
-  //     (parseFloat(maxWidth) / 100) * window.innerWidth
-  //   )}px`;
-  //   const box = document.getElementById("cat-container");
-  //   const maxScroll =
-  //     document.documentElement.scrollHeight - window.innerHeight;
-
-  //   let newBorderRadius = Math.max(40, 50 - (scrollY / maxScroll) * 50);
-
-  //   box.style.borderRadius = `${newBorderRadius}px`;
-  // });
 </script>
 <script>
   const gifContainer = document.getElementById("gifContainer");
@@ -260,38 +264,69 @@
   }
 
   function scrollLeft() {
-    scrollPosition -= gifWidth;
-    gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-
-    if (scrollPosition <= 0) {
-      setTimeout(() => {
-        gifTrack.style.transition = "none";
-        scrollPosition += gifWidth * gifs.length;
-        gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-        setTimeout(
-          () => (gifTrack.style.transition = "transform 0.5s ease"),
-          0
-        );
-      }, 500); // Transition duration
+    if (scrollPosition >= 0) {
+      scrollPosition -= gifWidth;
+      gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+      cloneGifs();
     }
   }
 
   function scrollRight() {
     scrollPosition += gifWidth;
     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-
-    if (scrollPosition >= gifWidth * gifs.length) {
-      setTimeout(() => {
-        gifTrack.style.transition = "none";
-        scrollPosition -= gifWidth * gifs.length;
-        gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-        setTimeout(
-          () => (gifTrack.style.transition = "transform 0.5s ease"),
-          0
-        );
-      }, 500); // Transition duration
+    if (scrollPosition >= gifTrack.scrollWidth - gifContainer.offsetWidth) {
+      cloneGifs();
     }
   }
 
   cloneGifs();
+</script>
+<script>
+  const catContainer = document.getElementById("cat-container");
+  const catImage = document.getElementById("resizable-image");
+
+  let lastScrollTop = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollTop =
+      window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollTop > lastScrollTop) {
+      catContainer.style.width = "700px";
+      catContainer.style.height = "400px";
+      catContainer.style.borderRadius = "30px";
+      catImage.style.width = "900px";
+      catImage.style.height = "500px";
+    } else {
+      catContainer.style.width = "250px";
+      catContainer.style.height = "150px";
+      catContainer.style.borderRadius = "80px";
+      catImage.style.width = "250px";
+      catImage.style.height = "190px";
+    }
+
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const containers = document.querySelectorAll(".container");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    containers.forEach((container) => {
+      observer.observe(container);
+    });
+  });
 </script>
