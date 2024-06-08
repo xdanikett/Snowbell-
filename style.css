@@ -366,15 +366,3 @@ body {
   font-size: 0.9rem;
   margin-top: 1.1rem;
 }
-.container1 {
-  transform: translateX(-100%);
-}
-
-.container2 {
-  transform: translateX(100%);
-}
-
-.container-visible {
-  opacity: 1;
-  transform: translateX(0);
-}

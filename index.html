@@ -263,56 +263,35 @@
     scrollPosition -= gifWidth;
     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
 
-    // if (scrollPosition <= 0) {
-    //   setTimeout(() => {
-    //     gifTrack.style.transition = "none";
-    //     scrollPosition += gifWidth * gifs.length;
-    //     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-    //     setTimeout(
-    //       () => (gifTrack.style.transition = "transform 0.5s ease"),
-    //       0
-    //     );
-    //   }, 500); // Transition duration
-    // }
+    if (scrollPosition <= 0) {
+      setTimeout(() => {
+        gifTrack.style.transition = "none";
+        scrollPosition += gifWidth * gifs.length;
+        gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+        setTimeout(
+          () => (gifTrack.style.transition = "transform 0.5s ease"),
+          0
+        );
+      }, 500); // Transition duration
+    }
   }
 
   function scrollRight() {
     scrollPosition += gifWidth;
     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
 
-    // if (scrollPosition >= gifWidth * gifs.length) {
-    //   setTimeout(() => {
-    //     gifTrack.style.transition = "none";
-    //     scrollPosition -= gifWidth * gifs.length;
-    //     gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-    //     setTimeout(
-    //       () => (gifTrack.style.transition = "transform 0.5s ease"),
-    //       0
-    //     );
-    //   }, 500); // Transition duration
-    // }
+    if (scrollPosition >= gifWidth * gifs.length) {
+      setTimeout(() => {
+        gifTrack.style.transition = "none";
+        scrollPosition -= gifWidth * gifs.length;
+        gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+        setTimeout(
+          () => (gifTrack.style.transition = "transform 0.5s ease"),
+          0
+        );
+      }, 500); // Transition duration
+    }
   }
 
   cloneGifs();
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const containers = document.querySelectorAll(".container");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("container-visible");
-            observer.unobserve(entry.target); // Unobserve the element once it is visible
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    containers.forEach((container) => {
-      observer.observe(container);
-    });
-  });
 </script>
