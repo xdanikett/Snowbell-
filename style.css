@@ -14,7 +14,17 @@ body {
   background-color: #0f1108;
   overflow-x: hidden;
 }
-
+#animated-element {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  transition: transform 2s ease;
+  z-index: -111;
+  border-radius: 50%;
+  background: url("/images/Hover.svg");
+  background: linear-gradient(90deg, #e9b32b 0%, #c68307 100%);
+  filter: blur(20px);
+}
 .header {
   display: flex;
   flex-direction: column;
@@ -97,7 +107,7 @@ body {
   height: 150px;
   background: linear-gradient(538deg, #454d29, #242a0d);
   border-radius: 80px;
-  transition: width 6s, height 6s, border-radius 6s;
+  transition: width 2s, height 2s, border-radius 2s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +116,7 @@ body {
 #resizable-image {
   width: 250px;
   height: 190px;
-  transition: width 6s, height 6s;
+  transition: width 2s, height 2s;
 }
 
 .memecoin-section {
@@ -182,6 +192,7 @@ body {
 }
 .content-container {
   padding-top: 5.2rem;
+  padding-bottom: 2.9rem;
 }
 .scroll-heading {
   font-size: 2.7rem;
@@ -201,7 +212,8 @@ body {
   align-items: center;
   text-align: center;
   color: white;
-  gap: 3.8rem;
+  gap: 3rem;
+  padding-top: 2.9rem;
 }
 
 .tokenomic-heading {
@@ -261,37 +273,6 @@ body {
   letter-spacing: 0.7rem;
 }
 
-.gif-container-wrapper {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-}
-
-.gif-container {
-  overflow-x: hidden;
-  display: flex;
-  width: 100%;
-  padding-top: 1.9rem;
-}
-
-.gif-track {
-  display: flex;
-  transition: transform 0.5s ease;
-  will-change: transform;
-}
-
-.gif-svg {
-  flex: 0 0 auto;
-  width: 450px;
-  height: 400px;
-  margin-right: 10px;
-  object-fit: cover;
-  background-position: center;
-}
-
 .scroll-button {
   background-color: #f1f1f1;
   border: none;
@@ -299,7 +280,6 @@ body {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   z-index: 1;
 }
 
@@ -314,27 +294,73 @@ body {
 .scroll-button:hover {
   background-color: #ddd;
 }
+section {
+  width: 75vw;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section::before,
+section::after {
+  content: "";
+  background-color: #0f1108;
+  position: absolute;
+  border-radius: 50%;
+  left: calc(-1 * 60px);
+  right: calc(-1 * 60px);
+  height: 99px;
+}
+section::before {
+  top: calc(-0.6 * 120px);
+}
+section::after {
+  bottom: calc(-0.6 * 120px);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 360px;
+  grid-auto-flow: column;
+  grid-gap: 5px;
+  background-color: #0f1108;
+  transition: transform 0.5s ease;
+}
+
+.wrapper img {
+  width: 16rem;
+  height: 24rem;
+}
 
 @keyframes slideInFromLeft {
   from {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translate(-100%, -100%);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(0, 0);
   }
 }
-
 @keyframes slideInFromRight {
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translate(100%, -100%);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(0, 0);
   }
+}
+.container1.visible {
+  animation: slideInFromLeft 1s forwards;
+}
+
+.container2.visible {
+  animation: slideInFromRight 1s forwards;
 }
 
 .container-flipper {
@@ -342,13 +368,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   font-family: "Prosto One", sans-serif;
   color: white;
-  margin: 2rem 0;
+  margin: 1rem 0;
   gap: 1.1rem;
-  padding: 2.2rem;
-  padding-left: 21.3rem;
-  padding-right: 21.3rem;
+  padding-left: 11.3rem;
+  padding-right: 15.3rem;
   max-width: 100%;
 }
 
@@ -359,8 +385,8 @@ body {
   background-color: #778640;
   opacity: 0;
   transition: background-color 1s;
-  width: 50%;
-  padding: 4.1rem 2.2rem;
+  width: 45%;
+  padding: 1.7rem 3.2rem;
   border-radius: 1.2rem;
 }
 .container2 {
@@ -386,11 +412,47 @@ body {
   font-size: 0.9rem;
   margin-top: 1.1rem;
 }
-
-.container1.visible {
-  animation: slideInFromLeft 1s forwards;
+.uniswap-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5.2rem;
+  font-family: "Prosto One", sans-serif;
+  color: white;
+  position: relative;
 }
 
-.container2.visible {
-  animation: slideInFromRight 1s forwards;
+.uniswap-container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    180deg,
+    rgba(119, 134, 64, 0.5) 0%,
+    rgba(65, 79, 14, 0.5) 100%
+  );
+  width: 30%;
+  padding: 3.5rem 2.2rem;
+  border-radius: 1.2rem;
+  position: relative;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
+}
+
+.uniswap-imagee {
+  position: absolute;
+  width: 13.5%;
+  z-index: -1 !important;
+  left: 21rem;
+  bottom: 17.4rem;
+}
+
+.uniswap2-container {
+  background-color: #778640;
+  width: 50%;
+  height: 60vh;
+  border-radius: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

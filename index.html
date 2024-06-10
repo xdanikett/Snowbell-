@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <div id="animated-element"></div>
     <!-- Header section -->
     <div class="header">
       <div class="logo-header">
@@ -93,40 +94,35 @@
         investment 💸 flair. So, grab ✨ your whiskers and let's sashay 🚶 our
         way to the moon 🌑 together 🤝! 🚀
       </p>
-
-      <div class="gif-container-wrapper">
-        <button class="scroll-button left" onclick="scrollLeft()">
-          &#9664;
-        </button>
-        <div class="gif-container" id="gifContainer">
-          <div class="gif-track" id="gifTrack">
-            <img
-              class="gif-svg"
-              src="images/a realistic fun 43fcd62c-d628-45c1-81a5-f344b87629c6.gif"
-              alt=""
-            />
-            <img
-              class="gif-svg"
-              src="images/a realistic fun 89effb41-5e66-4586-85f7-3eed182ef434.gif"
-              alt=""
-            />
-            <img
-              class="gif-svg"
-              src="images/a realistic fun a4c5ee9f-c14c-44d7-8e6a-540112c721f4.gif"
-              alt=""
-            />
-            <img
-              class="gif-svg"
-              src="images/WhatsApp Video 2024-05-18 at 3.41.48 PM (1).gif"
-              alt=""
-            />
-          </div>
-        </div>
-        <button class="scroll-button right" onclick="scrollRight()">
-          &#9654;
-        </button>
-      </div>
     </div>
+
+    <section class="gifContainer">
+      <div class="wrapper" id="gifTrack">
+        <img
+          class="gif-svg"
+          src="images/a realistic fun 43fcd62c-d628-45c1-81a5-f344b87629c6.gif"
+          alt=""
+        />
+        <img
+          class="gif-svg"
+          src="images/a realistic fun 89effb41-5e66-4586-85f7-3eed182ef434.gif"
+          alt=""
+        />
+        <img
+          class="gif-svg"
+          src="images/a realistic fun a4c5ee9f-c14c-44d7-8e6a-540112c721f4.gif"
+          alt=""
+        />
+        <img
+          class="gif-svg"
+          src="images/WhatsApp Video 2024-05-18 at 3.41.48 PM (1).gif"
+          alt=""
+        />
+      </div>
+      <button class="scroll-button right" onclick="scrollRight()">
+        &#9654;
+      </button>
+    </section>
 
     <!-- Content-section -->
 
@@ -193,6 +189,34 @@
         </p>
       </div>
     </div>
+
+    <!-- Uniswap-section -->
+
+    <div class="uniswap-section">
+      <div class="uniswap-container">
+        <p class="container-heading" style="font-size: 1.6rem">
+          Unleash the SNBL on Uniswap! 🚀
+        </p>
+        <p class="container-content" style="font-size: 0.6rem">
+          Ready 🚀 to dive into the crypto 🤑 litter box 🎁 and snag some 💰
+          Snowbell Coin ($SNBL) on Uniswap 🦄? First, grab your catnip 😸 and
+          open your Metamask wallet 🦊—this adventure 🏞️ requires some
+          whisker-twitching💲 🤑 crypto skills! Head to Uniswap 🦄like a cat on
+          a mission 🎯, locate 💰$SNBL in the token 💰 menu 📜, and set your
+          slippage tolerance 📉 to avoid ❌ any hairballs. Swap 🔁 your 🇪🇹🇭 for
+          SNBL, but remember 🧠, patience is key 🗝️—just like waiting ⏳ for
+          your human 🙎‍♂️ to open that can of tuna! Now, sit back 🔙, relax 🤗,
+          and watch your SNBL balance climb 🎢 like a cat scaling a curtain!
+          🐱📈
+        </p>
+      </div>
+      <img class="uniswap-imagee" src="images/uniswap image.svg" alt="" />
+
+      <div class="uniswap2-container">
+        <p class="container-heading">WEB-VIEW</p>
+      </div>
+    </div>
+
     <!-- Tokenomic section -->
 
     <div class="tokenomic-container">
@@ -240,12 +264,16 @@
 </html>
 
 <script>
-  // var cursor = document.querySelector(".cursor");
-  // var cursor2 = document.querySelector(".cursor2");
-  // document.addEventListener("mousemove", function (e) {
-  //   cursor.style.cssText = cursor2.style.cssText =
-  //     "left: " + e.clientX + "px; top: " + e.clientY + "px;";
-  // });
+  document.addEventListener("mousemove", function (e) {
+    const animatedElement = document.getElementById("animated-element");
+    const xPos = e.pageX;
+    const yPos = e.pageY;
+
+    animatedElement.style.left = xPos + "px";
+    animatedElement.style.top = yPos + "px";
+
+    animatedElement.style.transform = "scale(1.2)";
+  });
 </script>
 <script>
   const gifContainer = document.getElementById("gifContainer");
@@ -263,40 +291,57 @@
     });
   }
 
-  function scrollLeft() {
-    if (scrollPosition >= 0) {
-      scrollPosition -= gifWidth;
-      gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-      cloneGifs();
-    }
-  }
-
   function scrollRight() {
     scrollPosition += gifWidth;
-    gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-    if (scrollPosition >= gifTrack.scrollWidth - gifContainer.offsetWidth) {
-      cloneGifs();
+    if (scrollPosition >= gifTrack.scrollWidth / 2) {
+      scrollPosition = 0;
     }
+    gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
+    cloneGifs();
   }
 
   cloneGifs();
 </script>
+
 <script>
   const catContainer = document.getElementById("cat-container");
   const catImage = document.getElementById("resizable-image");
+  const defaultImage = document.getElementById("default-image");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        window.addEventListener("scroll", handleScroll);
+        defaultImage.style.display = "none";
+        catContainer.style.display = "block";
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+        defaultImage.style.display = "block";
+        catContainer.style.display = "none";
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(catContainer);
 
   let lastScrollTop = 0;
 
-  window.addEventListener("scroll", () => {
+  function handleScroll() {
     const currentScrollTop =
       window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScrollTop > lastScrollTop) {
-      catContainer.style.width = "700px";
-      catContainer.style.height = "400px";
-      catContainer.style.borderRadius = "30px";
-      catImage.style.width = "900px";
-      catImage.style.height = "500px";
+      catContainer.style.width = "800px";
+      catContainer.style.height = "500px";
+      catContainer.style.borderRadius = "18px";
+      catImage.style.width = "1000px";
+      catImage.style.height = "600px";
     } else {
       catContainer.style.width = "250px";
       catContainer.style.height = "150px";
@@ -306,18 +351,32 @@
     }
 
     lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-  });
+  }
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const containers = document.querySelectorAll(".container");
+    let lastScrollTop = 0;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const currentScrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            if (currentScrollTop > lastScrollTop) {
+              entry.target.classList.add("visible");
+              entry.target.classList.remove("hidden");
+            }
+          } else {
+            if (currentScrollTop < lastScrollTop) {
+              entry.target.classList.remove("visible");
+              entry.target.classList.add("hidden");
+            }
           }
+
+          lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
         });
       },
       {
