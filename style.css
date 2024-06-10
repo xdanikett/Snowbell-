@@ -14,16 +14,18 @@ body {
   background-color: #0f1108;
   overflow-x: hidden;
 }
-#animated-element {
-  width: 80px;
-  height: 80px;
+
+.sparkle {
+  width: 30px;
+  height: 30px;
   position: absolute;
-  transition: transform 2s ease;
-  z-index: -111;
   border-radius: 50%;
-  background: url("/images/Hover.svg");
   background: linear-gradient(90deg, #e9b32b 0%, #c68307 100%);
-  filter: blur(20px);
+  filter: blur(7px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0.3;
+  z-index: -1;
 }
 .header {
   display: flex;
@@ -105,18 +107,22 @@ body {
 #cat-container {
   width: 250px;
   height: 150px;
-  background: linear-gradient(538deg, #454d29, #242a0d);
-  border-radius: 80px;
-  transition: width 2s, height 2s, border-radius 2s;
+  border-radius: 90px;
+  background-image: url(images/cat\ back.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  transition: width 0.5s, height 0.5s, border-radius 0.5s;
 }
 
 #resizable-image {
-  width: 250px;
+  position: absolute;
   height: 190px;
-  transition: width 2s, height 2s;
+  transition: width 0.5s, height 0.5s;
 }
 
 .memecoin-section {
@@ -133,7 +139,7 @@ body {
   color: white;
   border-radius: 1rem;
   position: relative;
-  padding: 3rem 0 5rem 0;
+  padding: 4rem 0 6rem 0;
   margin: 1rem 8rem;
   background: linear-gradient(
     180deg,
@@ -261,41 +267,31 @@ body {
 }
 .footer-social-icon {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 7.2rem;
+
+  place-content: flex-end;
+  gap: 4.7rem;
   padding-top: 4.2rem;
+  align-items: center;
 }
 #social-icon {
   width: 2rem;
+}
+.uniswapImg {
+  height: 3.2rem;
+  text-align: center;
+}
+.uniswapImg2 {
+  width: 2.8rem;
+}
+.dextolImge {
+  width: 1.6rem;
 }
 .spaced {
   letter-spacing: 0.7rem;
 }
 
-.scroll-button {
-  background-color: #f1f1f1;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-}
-
-.scroll-button.left {
-  left: 0;
-}
-
-.scroll-button.right {
-  right: 0;
-}
-
-.scroll-button:hover {
-  background-color: #ddd;
-}
 section {
-  width: 75vw;
+  width: 70vw;
   overflow: hidden;
   position: relative;
   margin: auto;
@@ -316,23 +312,51 @@ section::after {
 }
 section::before {
   top: calc(-0.6 * 120px);
+  background: #0f1108;
 }
 section::after {
   bottom: calc(-0.6 * 120px);
+  background: #0f1108;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f1108;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f1108;
+}
+
+::-webkit-scrollbar-corner {
+  background: #0f1108;
 }
 
 .wrapper {
-  display: grid;
+  display: flex;
   grid-template-rows: 360px;
   grid-auto-flow: column;
   grid-gap: 5px;
   background-color: #0f1108;
-  transition: transform 0.5s ease;
+  transition: transform 0.2s ease;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
 }
 
 .wrapper img {
-  width: 16rem;
   height: 24rem;
+}
+
+.gifContainer {
+  scrollbar-width: none;
+}
+.gifContainer::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes slideInFromLeft {
@@ -430,8 +454,8 @@ section::after {
     rgba(119, 134, 64, 0.5) 0%,
     rgba(65, 79, 14, 0.5) 100%
   );
-  width: 30%;
-  padding: 3.5rem 2.2rem;
+  width: 35%;
+  padding: 1.5rem 2.2rem;
   border-radius: 1.2rem;
   position: relative;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -443,13 +467,13 @@ section::after {
   position: absolute;
   width: 13.5%;
   z-index: -1 !important;
-  left: 21rem;
+  left: 23rem;
   bottom: 17.4rem;
 }
 
 .uniswap2-container {
   background-color: #778640;
-  width: 50%;
+  width: 45%;
   height: 60vh;
   border-radius: 1.2rem;
   display: flex;

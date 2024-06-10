@@ -15,7 +15,6 @@
   </head>
 
   <body>
-    <div id="animated-element"></div>
     <!-- Header section -->
     <div class="header">
       <div class="logo-header">
@@ -26,11 +25,28 @@
             alt="telegram"
           />
         </a>
+        <a rel="noopener" href="https://telegram.org/" target="_blank">
+          <img class="social-icon" src="images/linktree.svg" alt="telegram" />
+        </a>
         <img class="cat-logo" src="images/SNBL Logo_2 1.svg" alt="" />
         <a rel="noopener" href="https://telegram.org/" target="_blank">
           <img
             class="social-icon"
             src="images/Social Media.svg"
+            alt="telegram"
+          />
+        </a>
+        <a rel="noopener" href="https://telegram.org/" target="_blank">
+          <img
+            class="social-icon uniswapImg2"
+            src="images/uniswap.svg"
+            alt="telegram"
+          />
+        </a>
+        <a rel="noopener" href="https://telegram.org/" target="_blank">
+          <img
+            class="social-icon dextolImge"
+            src="images/Dextool.svg"
             alt="telegram"
           />
         </a>
@@ -55,9 +71,14 @@
         purr-fectly delightful. Join us in this meow-nificent adventure to the
         moon! 🚀🌕
       </p>
+
       <div id="cat-container">
         <img id="resizable-image" src="images/new cat2.svg" alt="" />
       </div>
+
+      <!-- <div id="cat-container">
+        <img id="resizable-image" src="images/new cat2.svg" alt="" />
+      </div> -->
     </div>
 
     <!-- Memecoin section -->
@@ -96,7 +117,7 @@
       </p>
     </div>
 
-    <section class="gifContainer">
+    <section class="gifContainer" id="gifContainer">
       <div class="wrapper" id="gifTrack">
         <img
           class="gif-svg"
@@ -119,9 +140,6 @@
           alt=""
         />
       </div>
-      <button class="scroll-button right" onclick="scrollRight()">
-        &#9654;
-      </button>
     </section>
 
     <!-- Content-section -->
@@ -197,7 +215,7 @@
         <p class="container-heading" style="font-size: 1.6rem">
           Unleash the SNBL on Uniswap! 🚀
         </p>
-        <p class="container-content" style="font-size: 0.6rem">
+        <p class="container-content" style="font-size: 0.8rem">
           Ready 🚀 to dive into the crypto 🤑 litter box 🎁 and snag some 💰
           Snowbell Coin ($SNBL) on Uniswap 🦄? First, grab your catnip 😸 and
           open your Metamask wallet 🦊—this adventure 🏞️ requires some
@@ -243,6 +261,9 @@
             />
           </a>
           <a rel="noopener" href="https://telegram.org/" target="_blank">
+            <img class="uniswapImg" src="./images/uniswap.svg" alt="telegram" />
+          </a>
+          <a rel="noopener" href="https://telegram.org/" target="_blank">
             <img id="social-icon" src="./images/Dextool.svg" alt="telegram" />
           </a>
           <a rel="noopener" href="https://telegram.org/" target="_blank">
@@ -265,93 +286,101 @@
 
 <script>
   document.addEventListener("mousemove", function (e) {
-    const animatedElement = document.getElementById("animated-element");
-    const xPos = e.pageX;
-    const yPos = e.pageY;
+    const xPos = e.pageX - 15;
+    const yPos = e.pageY - 15;
 
-    animatedElement.style.left = xPos + "px";
-    animatedElement.style.top = yPos + "px";
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.style.left = xPos + "px";
+    sparkle.style.top = yPos + "px";
+    document.body.appendChild(sparkle);
 
-    animatedElement.style.transform = "scale(1.2)";
+    setTimeout(() => {
+      sparkle.style.opacity = 1;
+      sparkle.style.transform = "scale(1.2)";
+
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          sparkle.style.opacity = 0;
+          sparkle.style.transform = "scale(1)";
+        }, 100);
+      });
+    }, 100);
+
+    setTimeout(() => {
+      sparkle.remove();
+    }, 600);
   });
-</script>
-<script>
-  const gifContainer = document.getElementById("gifContainer");
-  const gifTrack = document.getElementById("gifTrack");
-  const gifs = Array.from(gifTrack.children);
-  const gifWidth =
-    gifs[0].offsetWidth +
-    parseInt(window.getComputedStyle(gifs[0]).marginRight);
-  let scrollPosition = 0;
-
-  function cloneGifs() {
-    gifs.forEach((gif) => {
-      const clone = gif.cloneNode(true);
-      gifTrack.appendChild(clone);
-    });
-  }
-
-  function scrollRight() {
-    scrollPosition += gifWidth;
-    if (scrollPosition >= gifTrack.scrollWidth / 2) {
-      scrollPosition = 0;
-    }
-    gifTrack.style.transform = `translateX(${-scrollPosition}px)`;
-    cloneGifs();
-  }
-
-  cloneGifs();
 </script>
 
 <script>
   const catContainer = document.getElementById("cat-container");
-  const catImage = document.getElementById("resizable-image");
-  const defaultImage = document.getElementById("default-image");
+  const resizableImage = document.getElementById("resizable-image");
 
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
-  };
+  const initialWidth = 250;
+  const initialHeight = 150;
+  const initialImageHeight = 190;
+  const initialBorderRadius = 90;
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        window.addEventListener("scroll", handleScroll);
-        defaultImage.style.display = "none";
-        catContainer.style.display = "block";
-      } else {
-        window.removeEventListener("scroll", handleScroll);
-        defaultImage.style.display = "block";
-        catContainer.style.display = "none";
-      }
-    });
-  }, observerOptions);
+  const maxWidth = 700;
+  const maxHeight = 550;
+  const maxBorderRadius = 0;
+  const maxImageHeight = 620;
 
-  observer.observe(catContainer);
+  let lastScrollPosition = 0;
 
-  let lastScrollTop = 0;
+  window.addEventListener("scroll", () => {
+    let scrollPosition = window.scrollY;
 
-  function handleScroll() {
-    const currentScrollTop =
-      window.pageYOffset || document.documentElement.scrollTop;
+    let newWidth = initialWidth + scrollPosition;
+    let newHeight = initialHeight + scrollPosition;
+    let newImageHeight = initialImageHeight + scrollPosition;
+    let newBorderRadius = initialBorderRadius + scrollPosition;
 
-    if (currentScrollTop > lastScrollTop) {
-      catContainer.style.width = "800px";
-      catContainer.style.height = "500px";
-      catContainer.style.borderRadius = "18px";
-      catImage.style.width = "1000px";
-      catImage.style.height = "600px";
-    } else {
-      catContainer.style.width = "250px";
-      catContainer.style.height = "150px";
-      catContainer.style.borderRadius = "80px";
-      catImage.style.width = "250px";
-      catImage.style.height = "190px";
+    if (newWidth > maxWidth) {
+      newWidth = maxWidth;
+    } else if (scrollPosition < lastScrollPosition && newWidth < initialWidth) {
+      newWidth = initialWidth;
     }
 
-    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-  }
+    if (newHeight > maxHeight) {
+      newHeight = maxHeight;
+    } else if (
+      scrollPosition < lastScrollPosition &&
+      newHeight < initialHeight
+    ) {
+      newHeight = initialHeight;
+    }
+
+    if (newImageHeight > maxImageHeight) {
+      newImageHeight = maxImageHeight;
+    } else if (
+      scrollPosition < lastScrollPosition &&
+      newImageHeight < initialImageHeight
+    ) {
+      newImageHeight = initialImageHeight;
+    }
+
+    if (newBorderRadius > maxBorderRadius) {
+      newBorderRadius = scrollPosition;
+    } else if (
+      scrollPosition < lastScrollPosition &&
+      newBorderRadius > initialBorderRadius
+    ) {
+      newBorderRadius = initialBorderRadius;
+    }
+    {
+      newBorderRadius = initialBorderRadius;
+    }
+
+    catContainer.style.width = newWidth + "px";
+    catContainer.style.height = newHeight + "px";
+    resizableImage.style.width = newWidth + "px";
+    resizableImage.style.height = newImageHeight + "px";
+    catContainer.style.borderRadius = newBorderRadius + "px";
+
+    lastScrollPosition = scrollPosition;
+  });
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -380,7 +409,7 @@
         });
       },
       {
-        threshold: 0.1,
+        threshold: 0.3,
       }
     );
 
@@ -388,4 +417,51 @@
       observer.observe(container);
     });
   });
+</script>
+<script>
+  const gifContainer = document.getElementById("gifContainer");
+  const gifTrack = document.getElementById("gifTrack");
+  const gifs = Array.from(gifTrack.children);
+  const gifWidth =
+    gifs[0].offsetWidth +
+    parseInt(window.getComputedStyle(gifs[0]).marginRight);
+  let scrollPosition = 0;
+
+  function cloneGifs() {
+    gifs.forEach((gif) => {
+      const clone = gif.cloneNode(true);
+      gifTrack.appendChild(clone);
+    });
+    gifs.forEach((gif) => {
+      const clone = gif.cloneNode(true);
+      gifTrack.insertBefore(clone, gifTrack.firstChild);
+    });
+  }
+
+  function updateScrollPosition() {
+    scrollPosition = gifContainer.scrollLeft;
+    const totalWidth = gifTrack.scrollWidth / 3;
+    cloneGifs();
+
+    if (scrollPosition >= totalWidth * 2) {
+      gifContainer.scrollLeft = totalWidth;
+      cloneGifs();
+    }
+
+    if (scrollPosition <= 0) {
+      gifContainer.scrollLeft = totalWidth;
+      cloneGifs();
+    }
+  }
+
+  gifContainer.addEventListener("scroll", updateScrollPosition);
+  cloneGifs();
+
+  window.addEventListener("resize", () => {
+    gifContainer.scrollLeft = gifTrack.scrollWidth / 3;
+    cloneGifs();
+  });
+
+  cloneGifs();
+  gifContainer.scrollLeft = gifTrack.scrollWidth / 3;
 </script>
