@@ -16,16 +16,16 @@ body {
 }
 
 .sparkle {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   border-radius: 50%;
   background: linear-gradient(90deg, #e9b32b 0%, #c68307 100%);
-  filter: blur(7px);
+  filter: blur(10px);
   pointer-events: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
-  opacity: 0.3;
-  z-index: -1;
+  opacity: 0.5;
+  z-index: -1111111;
 }
 .header {
   display: flex;
@@ -108,21 +108,23 @@ body {
   width: 250px;
   height: 150px;
   border-radius: 90px;
-  background-image: url(images/cat\ back.svg);
+  /* background-image: url(images/cat\ back.svg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed;
+  background-position: center top; */
+  background-color: #454d29;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: width 0.5s, height 0.5s, border-radius 0.5s;
+  transition: width 0.1s, height 0.1s, border-radius 0.1s;
 }
 
 #resizable-image {
   position: absolute;
-  height: 190px;
-  transition: width 0.5s, height 0.5s;
+  height: 180px;
+  transition: width 0.1s, height 0.1s;
 }
 
 .memecoin-section {
@@ -196,10 +198,12 @@ body {
   gap: 2.2rem;
   padding-top: 12.2rem;
 }
+
 .content-container {
-  padding-top: 5.2rem;
+  padding-top: 4.2rem;
   padding-bottom: 2.9rem;
 }
+
 .scroll-heading {
   font-size: 2.7rem;
   font-family: "Prosto One", sans-serif;
@@ -221,7 +225,9 @@ body {
   gap: 3rem;
   padding-top: 2.9rem;
 }
-
+.clickables {
+  cursor: pointer;
+}
 .tokenomic-heading {
   font-family: "Prosto One", sans-serif;
 
@@ -361,30 +367,82 @@ section::after {
 
 @keyframes slideInFromLeft {
   from {
-    opacity: 0;
-    transform: translate(-100%, -100%);
+    opacity: 0.3;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(-321.5px, 0px) rotate(-30deg);
   }
   to {
     opacity: 1;
-    transform: translate(0, 0);
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate3d(-0.9064px, 0px, 0px) rotate(-0.0282deg);
   }
 }
 @keyframes slideInFromRight {
   from {
-    opacity: 0;
-    transform: translate(100%, -100%);
+    opacity: 0.3;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(321.5px, 0px) rotate(35deg);
   }
   to {
     opacity: 1;
-    transform: translate(0, 0);
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0%, -0.581%) translate3d(0px, 0px, 0px);
   }
 }
+@keyframes slideOutToLeft {
+  from {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate3d(-0.9064px, 0px, 0px) rotate(-0.0282deg);
+  }
+  to {
+    opacity: 0.3;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(-321.5px, 0px) rotate(-30deg);
+  }
+}
+@keyframes slideOutToRight {
+  from {
+    opacity: 1;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(0%, -0.581%) translate3d(0px, 0px, 0px);
+  }
+  to {
+    opacity: 0.3;
+    translate: none;
+    rotate: none;
+    scale: none;
+    transform: translate(321.5px, 0px) rotate(35deg);
+  }
+}
+
 .container1.visible {
-  animation: slideInFromLeft 1s forwards;
+  animation: slideInFromLeft 1.2s forwards;
 }
 
 .container2.visible {
-  animation: slideInFromRight 1s forwards;
+  animation: slideInFromRight 1.2s forwards;
+}
+.container1.hidden {
+  animation: slideOutToLeft 1.2s forwards;
+}
+
+.container2.hidden {
+  animation: slideOutToRight 1.2s forwards;
 }
 
 .container-flipper {
@@ -392,13 +450,12 @@ section::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   font-family: "Prosto One", sans-serif;
   color: white;
   margin: 1rem 0;
   gap: 1.1rem;
-  padding-left: 11.3rem;
-  padding-right: 15.3rem;
+  padding-left: 14.3rem;
+  padding-right: 13.3rem;
   max-width: 100%;
 }
 
@@ -409,9 +466,9 @@ section::after {
   background-color: #778640;
   opacity: 0;
   transition: background-color 1s;
-  width: 45%;
-  padding: 1.7rem 3.2rem;
   border-radius: 1.2rem;
+  width: 38%;
+  padding: 4rem 4.2rem;
 }
 .container2 {
   display: flex;
@@ -433,9 +490,10 @@ section::after {
 }
 
 .container-content {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-top: 1.1rem;
 }
+
 .uniswap-section {
   display: flex;
   justify-content: space-around;
@@ -455,7 +513,7 @@ section::after {
     rgba(65, 79, 14, 0.5) 100%
   );
   width: 35%;
-  padding: 1.5rem 2.2rem;
+  padding: 1.8rem 2.2rem;
   border-radius: 1.2rem;
   position: relative;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

@@ -52,11 +52,11 @@
         </a>
       </div>
       <div class="content-header">
-        <p>Cat In Action</p>
-        <p>Tokenomics</p>
-        <p>What is $SNBL coin?</p>
-        <p>Roadmap</p>
-        <p>How to buy?</p>
+        <p class="clickables" id="catInAction">Cat In Action</p>
+        <p class="clickables" id="tokenomic">Tokenomics</p>
+        <p class="clickables" id="SNBLcoin">What is $SNBL coin?</p>
+        <p class="clickables" id="roadmap">Roadmap</p>
+        <p class="clickables" id="buy">How to buy?</p>
       </div>
     </div>
 
@@ -75,10 +75,6 @@
       <div id="cat-container">
         <img id="resizable-image" src="images/new cat2.svg" alt="" />
       </div>
-
-      <!-- <div id="cat-container">
-        <img id="resizable-image" src="images/new cat2.svg" alt="" />
-      </div> -->
     </div>
 
     <!-- Memecoin section -->
@@ -144,7 +140,7 @@
 
     <!-- Content-section -->
 
-    <div class="content-container scroll-container">
+    <div id="roadmapSection" class="content-container scroll-container">
       <p class="crypto-heading scroll-heading">
         Snowbell's Crypto Catventure! 🐾🌟
       </p>
@@ -211,7 +207,7 @@
     <!-- Uniswap-section -->
 
     <div class="uniswap-section">
-      <div class="uniswap-container">
+      <div id="uniswapSection" class="uniswap-container">
         <p class="container-heading" style="font-size: 1.6rem">
           Unleash the SNBL on Uniswap! 🚀
         </p>
@@ -231,7 +227,12 @@
       <img class="uniswap-imagee" src="images/uniswap image.svg" alt="" />
 
       <div class="uniswap2-container">
-        <p class="container-heading">WEB-VIEW</p>
+        <iframe
+          style="border-radius: 1.2rem"
+          width="100%"
+          height="100%"
+          src="https://www.netlify.com/"
+        ></iframe>
       </div>
     </div>
 
@@ -240,6 +241,7 @@
     <div class="tokenomic-container">
       <p class="tokenomic-heading">Tokenomic</p>
       <img
+        id="tokenomicSection"
         class="tokenomic-image"
         src="images/Tokenomics (3) 1 (1).svg"
         alt=""
@@ -279,15 +281,20 @@
           </a>
         </div>
       </div>
-      <img class="cycle-cat-image" src="images/cycle cat.svg" alt="" />
+      <img
+        id="footerSection"
+        class="cycle-cat-image"
+        src="images/cycle cat.svg"
+        alt=""
+      />
     </div>
   </body>
 </html>
 
 <script>
   document.addEventListener("mousemove", function (e) {
-    const xPos = e.pageX - 15;
-    const yPos = e.pageY - 15;
+    const xPos = e.pageX - 48;
+    const yPos = e.pageY - 28;
 
     const sparkle = document.createElement("div");
     sparkle.className = "sparkle";
@@ -297,12 +304,12 @@
 
     setTimeout(() => {
       sparkle.style.opacity = 1;
-      sparkle.style.transform = "scale(1.2)";
+      sparkle.style.transform = "scale(3)";
 
       requestAnimationFrame(() => {
         setTimeout(() => {
           sparkle.style.opacity = 0;
-          sparkle.style.transform = "scale(1)";
+          sparkle.style.transform = "scale(3)";
         }, 100);
       });
     }, 100);
@@ -322,10 +329,11 @@
   const initialImageHeight = 190;
   const initialBorderRadius = 90;
 
-  const maxWidth = 700;
-  const maxHeight = 550;
-  const maxBorderRadius = 0;
-  const maxImageHeight = 620;
+  const maxWidth = 850;
+  const maxHeight = 500;
+  const maxBorderRadius = 25;
+
+  const maxImageHeight = 600;
 
   let lastScrollPosition = 0;
 
@@ -335,7 +343,7 @@
     let newWidth = initialWidth + scrollPosition;
     let newHeight = initialHeight + scrollPosition;
     let newImageHeight = initialImageHeight + scrollPosition;
-    let newBorderRadius = initialBorderRadius + scrollPosition;
+    let newBorderRadius = initialBorderRadius - scrollPosition;
 
     if (newWidth > maxWidth) {
       newWidth = maxWidth;
@@ -361,15 +369,12 @@
       newImageHeight = initialImageHeight;
     }
 
-    if (newBorderRadius > maxBorderRadius) {
-      newBorderRadius = scrollPosition;
+    if (newBorderRadius < maxBorderRadius) {
+      newBorderRadius = maxBorderRadius;
     } else if (
       scrollPosition < lastScrollPosition &&
       newBorderRadius > initialBorderRadius
     ) {
-      newBorderRadius = initialBorderRadius;
-    }
-    {
       newBorderRadius = initialBorderRadius;
     }
 
@@ -464,4 +469,29 @@
 
   cloneGifs();
   gifContainer.scrollLeft = gifTrack.scrollWidth / 3;
+</script>
+<script>
+  document.getElementById("tokenomic").addEventListener("click", function () {
+    document
+      .getElementById("tokenomicSection")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("SNBLcoin").addEventListener("click", function () {
+    document
+      .getElementById("uniswapSection")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("roadmap").addEventListener("click", function () {
+    document
+      .getElementById("roadmapSection")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("catInAction").addEventListener("click", function () {
+    document.getElementById("gifTrack").scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("buy").addEventListener("click", function () {
+    document
+      .getElementById("footerSection")
+      .scrollIntoView({ behavior: "smooth" });
+  });
 </script>
