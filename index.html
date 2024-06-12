@@ -71,14 +71,18 @@
         purr-fectly delightful. Join us in this meow-nificent adventure to the
         moon! 🚀🌕
       </p>
+    </div>
 
-      <div id="cat-container">
-        <img id="resizable-image" src="images/new cat2.svg" alt="" />
+    <!-- Hero cat section -->
+    <div class="parent-container1">
+      <div id="catcontainer1">
+        <img id="resizableImg" src="images/new cat2.svg" alt="" />
       </div>
     </div>
 
     <!-- Memecoin section -->
-    <div class="memecoin-section">
+
+    <div class="memecoin-section" id="memeCoinSection">
       <div class="memecoin-container">
         <p class="memecoin-heading">What in cat's whiskers is $SNBL?</p>
         <p class="memecoin-content">
@@ -100,6 +104,7 @@
       <img class="coin4-image" src="images/Coin 4.svg" alt="" />
     </div>
     <!-- Scroll section -->
+
     <div class="scroll-container">
       <p class="scroll-heading">Snowbell's Crypto Catwalk! 🐱📈</p>
       <p class="scroll-content">
@@ -140,11 +145,11 @@
 
     <!-- Content-section -->
 
-    <div id="roadmapSection" class="content-container scroll-container">
+    <div class="content-container scroll-container">
       <p class="crypto-heading scroll-heading">
         Snowbell's Crypto Catventure! 🐾🌟
       </p>
-      <p class="crypto-content scroll-content">
+      <p class="crypto-content scroll-content" id="roadmapSection">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s, when an unknown printer took a galley of type and
@@ -180,7 +185,7 @@
       </div>
     </div>
     <div class="container-flipper">
-      <div class="container1 container">
+      <div class="container1 container thirdPhase">
         <p class="container-heading">Phase 3</p>
         <p class="container-content">
           "Kitten Chaos" - 🐱 In this initial phase, Snowbell Coin 💰 will
@@ -191,7 +196,7 @@
           feline-friendly charities🏬.
         </p>
       </div>
-      <div class="container container2">
+      <div class="container container2 forthPhase">
         <p class="container-heading">Phase 4</p>
         <p class="container-content">
           "Kitten Chaos" - 🐱 In this initial phase, Snowbell Coin 💰 will
@@ -238,10 +243,9 @@
 
     <!-- Tokenomic section -->
 
-    <div class="tokenomic-container">
+    <div id="tokenomicSection" class="tokenomic-container">
       <p class="tokenomic-heading">Tokenomic</p>
       <img
-        id="tokenomicSection"
         class="tokenomic-image"
         src="images/Tokenomics (3) 1 (1).svg"
         alt=""
@@ -321,73 +325,6 @@
 </script>
 
 <script>
-  const catContainer = document.getElementById("cat-container");
-  const resizableImage = document.getElementById("resizable-image");
-
-  const initialWidth = 250;
-  const initialHeight = 150;
-  const initialImageHeight = 190;
-  const initialBorderRadius = 90;
-
-  const maxWidth = 850;
-  const maxHeight = 500;
-  const maxBorderRadius = 25;
-
-  const maxImageHeight = 600;
-
-  let lastScrollPosition = 0;
-
-  window.addEventListener("scroll", () => {
-    let scrollPosition = window.scrollY;
-
-    let newWidth = initialWidth + scrollPosition;
-    let newHeight = initialHeight + scrollPosition;
-    let newImageHeight = initialImageHeight + scrollPosition;
-    let newBorderRadius = initialBorderRadius - scrollPosition;
-
-    if (newWidth > maxWidth) {
-      newWidth = maxWidth;
-    } else if (scrollPosition < lastScrollPosition && newWidth < initialWidth) {
-      newWidth = initialWidth;
-    }
-
-    if (newHeight > maxHeight) {
-      newHeight = maxHeight;
-    } else if (
-      scrollPosition < lastScrollPosition &&
-      newHeight < initialHeight
-    ) {
-      newHeight = initialHeight;
-    }
-
-    if (newImageHeight > maxImageHeight) {
-      newImageHeight = maxImageHeight;
-    } else if (
-      scrollPosition < lastScrollPosition &&
-      newImageHeight < initialImageHeight
-    ) {
-      newImageHeight = initialImageHeight;
-    }
-
-    if (newBorderRadius < maxBorderRadius) {
-      newBorderRadius = maxBorderRadius;
-    } else if (
-      scrollPosition < lastScrollPosition &&
-      newBorderRadius > initialBorderRadius
-    ) {
-      newBorderRadius = initialBorderRadius;
-    }
-
-    catContainer.style.width = newWidth + "px";
-    catContainer.style.height = newHeight + "px";
-    resizableImage.style.width = newWidth + "px";
-    resizableImage.style.height = newImageHeight + "px";
-    catContainer.style.borderRadius = newBorderRadius + "px";
-
-    lastScrollPosition = scrollPosition;
-  });
-</script>
-<script>
   document.addEventListener("DOMContentLoaded", () => {
     const containers = document.querySelectorAll(".container");
     let lastScrollTop = 0;
@@ -414,7 +351,7 @@
         });
       },
       {
-        threshold: 0.3,
+        threshold: 0.6,
       }
     );
 
@@ -460,6 +397,7 @@
   }
 
   gifContainer.addEventListener("scroll", updateScrollPosition);
+
   cloneGifs();
 
   window.addEventListener("resize", () => {
@@ -470,28 +408,131 @@
   cloneGifs();
   gifContainer.scrollLeft = gifTrack.scrollWidth / 3;
 </script>
+
 <script>
   document.getElementById("tokenomic").addEventListener("click", function () {
-    document
-      .getElementById("tokenomicSection")
-      .scrollIntoView({ behavior: "smooth" });
+    var element = document.getElementById("tokenomicSection");
+    var elementRect = element.getBoundingClientRect();
+    var absoluteElementTop = elementRect.top + window.pageYOffset;
+    var viewportMiddle = window.innerHeight / 2;
+    var elementMiddle = elementRect.height / 2;
+    var offset = -80;
+
+    var scrollPosition =
+      absoluteElementTop - viewportMiddle + elementMiddle + offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
   });
-  document.getElementById("SNBLcoin").addEventListener("click", function () {
-    document
-      .getElementById("uniswapSection")
-      .scrollIntoView({ behavior: "smooth" });
-  });
-  document.getElementById("roadmap").addEventListener("click", function () {
-    document
-      .getElementById("roadmapSection")
-      .scrollIntoView({ behavior: "smooth" });
-  });
+
   document.getElementById("catInAction").addEventListener("click", function () {
-    document.getElementById("gifTrack").scrollIntoView({ behavior: "smooth" });
+    var element = document.getElementById("gifTrack");
+    var elementRect = element.getBoundingClientRect();
+    var absoluteElementTop = elementRect.top + window.pageYOffset;
+    var viewportMiddle = window.innerHeight / 2;
+    var elementMiddle = elementRect.height / 2;
+    var offset = -80;
+
+    var scrollPosition =
+      absoluteElementTop - viewportMiddle + elementMiddle + offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
   });
+
+  document.getElementById("roadmap").addEventListener("click", function () {
+    var element = document.getElementById("roadmapSection");
+    var elementRect = element.getBoundingClientRect();
+    var absoluteElementTop = elementRect.top + window.pageYOffset;
+    var viewportMiddle = window.innerHeight / 2;
+    var elementMiddle = elementRect.height / 2;
+    var offset = 5;
+    var scrollPosition =
+      absoluteElementTop - viewportMiddle + elementMiddle + offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  });
+
   document.getElementById("buy").addEventListener("click", function () {
-    document
-      .getElementById("footerSection")
-      .scrollIntoView({ behavior: "smooth" });
+    var element = document.getElementById("uniswapSection");
+    var elementRect = element.getBoundingClientRect();
+    var absoluteElementTop = elementRect.top + window.pageYOffset;
+    var viewportMiddle = window.innerHeight / 2;
+    var elementMiddle = elementRect.height / 2;
+
+    var offset = -151;
+
+    var scrollPosition =
+      absoluteElementTop - viewportMiddle + elementMiddle + offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  });
+
+  document.getElementById("SNBLcoin").addEventListener("click", function () {
+    var element = document.getElementById("memeCoinSection");
+    var elementRect = element.getBoundingClientRect();
+    var absoluteElementTop = elementRect.top + window.pageYOffset;
+    var viewportMiddle = window.innerHeight / 2;
+    var elementMiddle = elementRect.height / 2;
+    var offset = -160;
+
+    var scrollPosition =
+      absoluteElementTop - viewportMiddle + elementMiddle + offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const catcontainer1 = document.querySelector("#catcontainer1");
+    const resizableImge = document.querySelector("#resizableImg");
+
+    let lastScrollTop = 0;
+
+    const handleScroll = () => {
+      const rect = catcontainer1.getBoundingClientRect();
+      const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+      const currentScrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (isVisible) {
+        if (currentScrollTop > lastScrollTop) {
+          catcontainer1.classList.add("visible");
+          catcontainer1.classList.remove("hidden");
+          resizableImge.classList.add("visible");
+          resizableImge.classList.remove("hidden");
+        } else {
+          catcontainer1.classList.add("hidden");
+          catcontainer1.classList.remove("visible");
+          resizableImge.classList.add("hidden");
+          resizableImge.classList.remove("visible");
+        }
+      } else {
+        if (currentScrollTop < lastScrollTop) {
+          catcontainer1.classList.add("hidden");
+          catcontainer1.classList.remove("visible");
+          resizableImge.classList.add("hidden");
+          resizableImge.classList.remove("visible");
+        }
+      }
+
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    };
+
+    window.addEventListener("scroll", handleScroll);
   });
 </script>

@@ -85,8 +85,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2.8rem 0;
-  padding-bottom: 8.2rem;
+  padding-top: 2.8rem;
 }
 
 .hero-heading {
@@ -103,30 +102,94 @@ body {
   margin: 1rem 0;
   width: 37%;
 }
-
-#cat-container {
-  width: 250px;
-  height: 150px;
-  border-radius: 90px;
-  /* background-image: url(images/cat\ back.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
-  background-position: center top; */
-  background-color: #454d29;
+.parent-container1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1.2rem;
+  margin-bottom: 6.2rem;
+}
+
+#catcontainer1 {
+  /* background-color: #242a0d; */
+  background-image: url(images/catBack\ Image.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 230px;
+  height: 130px;
+  border-radius: 125px;
+  transition: all 3s ease;
   position: relative;
-  transition: width 0.1s, height 0.1s, border-radius 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-#resizable-image {
+#resizableImg {
+  height: 158px;
   position: absolute;
-  height: 180px;
-  transition: width 0.1s, height 0.1s;
+  transition: all 3s ease;
 }
 
+@keyframes increaseSize {
+  from {
+    width: 230px;
+    height: 130px;
+    border-radius: 125px;
+  }
+  to {
+    width: 930px;
+    height: 560px;
+    border-radius: 20px;
+  }
+}
+
+@keyframes decreaseSize {
+  from {
+    width: 930px;
+    height: 560px;
+    border-radius: 20px;
+  }
+  to {
+    width: 230px;
+    height: 130px;
+    border-radius: 125px;
+  }
+}
+
+#catcontainer1.visible {
+  animation: increaseSize 3s forwards;
+}
+
+#catcontainer1.hidden {
+  animation: decreaseSize 3s forwards;
+}
+@keyframes increaseImageSize {
+  from {
+    height: 158px;
+  }
+  to {
+    height: 660px;
+  }
+}
+
+@keyframes decreaseImageSize {
+  from {
+    height: 660px;
+  }
+  to {
+    height: 158px;
+  }
+}
+
+#resizableImg.visible {
+  animation: increaseImageSize 3s forwards;
+}
+
+#resizableImg.hidden {
+  animation: decreaseImageSize 3s forwards;
+}
 .memecoin-section {
   display: flex;
   justify-content: center;
@@ -225,6 +288,7 @@ body {
   gap: 3rem;
   padding-top: 2.9rem;
 }
+
 .clickables {
   cursor: pointer;
 }
@@ -406,13 +470,14 @@ section::after {
     transform: translate3d(-0.9064px, 0px, 0px) rotate(-0.0282deg);
   }
   to {
-    opacity: 0.3;
+    opacity: 0;
     translate: none;
     rotate: none;
     scale: none;
     transform: translate(-321.5px, 0px) rotate(-30deg);
   }
 }
+
 @keyframes slideOutToRight {
   from {
     opacity: 1;
@@ -422,7 +487,7 @@ section::after {
     transform: translate(0%, -0.581%) translate3d(0px, 0px, 0px);
   }
   to {
-    opacity: 0.3;
+    opacity: 0;
     translate: none;
     rotate: none;
     scale: none;
@@ -480,11 +545,16 @@ section::after {
   background-color: blueviolet;
   cursor: pointer;
 }
-
-.container2:hover {
-  background-color: chocolate;
+.thirdPhase:hover {
+  background-color: #408679;
 }
 
+.container2:hover {
+  background-color: #864040;
+}
+.forthPhase:hover {
+  background-color: #468640;
+}
 .container-heading {
   font-size: 3rem;
 }
